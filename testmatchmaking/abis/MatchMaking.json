@@ -1,0 +1,347 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  { "inputs": [], "name": "UnknownWinner", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "player1",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "player2",
+        "type": "address"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "wager", "type": "uint256" },
+          {
+            "internalType": "enum MatchMaking.STATUS",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+          { "internalType": "address", "name": "winner", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "winningWager",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "is_draw", "type": "bool" }
+        ],
+        "indexed": false,
+        "internalType": "struct MatchMaking.MatchDetail",
+        "name": "matchDetail1",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "wager", "type": "uint256" },
+          {
+            "internalType": "enum MatchMaking.STATUS",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+          { "internalType": "address", "name": "winner", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "winningWager",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "is_draw", "type": "bool" }
+        ],
+        "indexed": false,
+        "internalType": "struct MatchMaking.MatchDetail",
+        "name": "matchDetail2",
+        "type": "tuple"
+      }
+    ],
+    "name": "GameMatched",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "matchId",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "player",
+        "type": "address"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "wager", "type": "uint256" },
+          {
+            "internalType": "enum MatchMaking.STATUS",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+          { "internalType": "address", "name": "winner", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "winningWager",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "is_draw", "type": "bool" }
+        ],
+        "indexed": false,
+        "internalType": "struct MatchMaking.MatchDetail",
+        "name": "matchDetail",
+        "type": "tuple"
+      }
+    ],
+    "name": "MatchCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "wager", "type": "uint256" },
+          {
+            "internalType": "enum MatchMaking.STATUS",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+          { "internalType": "address", "name": "winner", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "winningWager",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "is_draw", "type": "bool" }
+        ],
+        "indexed": false,
+        "internalType": "struct MatchMaking.MatchDetail",
+        "name": "matchDetail",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "uint256", "name": "amount1", "type": "uint256" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "amount2", "type": "uint256" }
+        ],
+        "indexed": false,
+        "internalType": "struct MatchMaking.WagerResult",
+        "name": "wagerResult",
+        "type": "tuple"
+      }
+    ],
+    "name": "WinningResult",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "winner",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "score1",
+        "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "score2",
+        "type": "uint256"
+      }
+    ],
+    "name": "WinningScore",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "name": "Withdraw",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "_id", "type": "uint256" },
+      { "internalType": "uint256", "name": "_winner", "type": "uint256" },
+      { "internalType": "uint256", "name": "_score1", "type": "uint256" },
+      { "internalType": "uint256", "name": "_score2", "type": "uint256" }
+    ],
+    "name": "finishMatch",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
+    "name": "getMatchDetail",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "address", "name": "player1", "type": "address" },
+          { "internalType": "address", "name": "player2", "type": "address" },
+          { "internalType": "uint256", "name": "wager", "type": "uint256" },
+          {
+            "internalType": "enum MatchMaking.STATUS",
+            "name": "status",
+            "type": "uint8"
+          },
+          { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+          { "internalType": "address", "name": "winner", "type": "address" },
+          {
+            "internalType": "uint256",
+            "name": "winningWager",
+            "type": "uint256"
+          },
+          { "internalType": "bool", "name": "is_draw", "type": "bool" }
+        ],
+        "internalType": "struct MatchMaking.MatchDetail",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "_player", "type": "address" }
+    ],
+    "name": "getMatches",
+    "outputs": [
+      { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "matchDetail",
+    "outputs": [
+      { "internalType": "address", "name": "player1", "type": "address" },
+      { "internalType": "address", "name": "player2", "type": "address" },
+      { "internalType": "uint256", "name": "wager", "type": "uint256" },
+      {
+        "internalType": "enum MatchMaking.STATUS",
+        "name": "status",
+        "type": "uint8"
+      },
+      { "internalType": "uint256", "name": "matchWith", "type": "uint256" },
+      { "internalType": "address", "name": "winner", "type": "address" },
+      { "internalType": "uint256", "name": "winningWager", "type": "uint256" },
+      { "internalType": "bool", "name": "is_draw", "type": "bool" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "matchId",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "", "type": "address" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "myMatches",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "quickMatch",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "wagerPayoffRate",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "wagerResult",
+    "outputs": [
+      { "internalType": "address", "name": "player1", "type": "address" },
+      { "internalType": "uint256", "name": "amount1", "type": "uint256" },
+      { "internalType": "address", "name": "player2", "type": "address" },
+      { "internalType": "uint256", "name": "amount2", "type": "uint256" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "waitingMatchId",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "_to", "type": "address" }],
+    "name": "withdraw",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
