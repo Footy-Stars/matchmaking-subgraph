@@ -1,0 +1,36 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MatchMaking
+    network: sepolia
+    source:
+      address: "0x62125dB2DA783f390CcE30cc354f97c316C62208"
+      abi: MatchMaking
+      startBlock: 4721477
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - GameMatched
+        - MatchCreated
+        - WinningResult
+        - WinningScore
+        - Withdraw
+      abis:
+        - name: MatchMaking
+          file: ./abis/MatchMaking.json
+      eventHandlers:
+        - event: GameMatched(address,address,(address,address,uint256,uint8,uint256,address,uint256,bool),(address,address,uint256,uint8,uint256,address,uint256,bool))
+          handler: handleGameMatched
+        - event: MatchCreated(uint256,address,(address,address,uint256,uint8,uint256,address,uint256,bool))
+          handler: handleMatchCreated
+        - event: WinningResult(uint256,(address,address,uint256,uint8,uint256,address,uint256,bool),(address,uint256,address,uint256))
+          handler: handleWinningResult
+        - event: WinningScore(uint256,address,uint256,uint256)
+          handler: handleWinningScore
+        - event: Withdraw(address,uint256)
+          handler: handleWithdraw
+      file: ./src/match-making.ts
